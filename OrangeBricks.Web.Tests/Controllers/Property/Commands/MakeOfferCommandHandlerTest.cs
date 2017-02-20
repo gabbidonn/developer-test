@@ -7,9 +7,10 @@ using OrangeBricks.Web.Models;
 namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
 {
     [TestFixture]
-    public class ListPropertyCommandHandlerTest
+    public class MakeOfferCommandHandlerTest
     {
-        private ListPropertyCommandHandler _handler;
+        private CreatePropertyCommandHandler _handler;
+        private MakeOfferCommandHandler _offerHandler;
         private IOrangeBricksContext _context;
         private IDbSet<Models.Property> _properties;
 
@@ -17,15 +18,18 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
         public void SetUp()
         {
             _context = Substitute.For<IOrangeBricksContext>();
+            _context.Properties.Returns(Substitute.For<IDbSet<Models.Property>>());
+            _handler = new CreatePropertyCommandHandler(_context);
+            _offerHandler = new MakeOfferCommandHandler(_context);
             _properties = Substitute.For<IDbSet<Models.Property>>();
-            _context.Properties.Returns(_properties);
-            _handler = new ListPropertyCommandHandler(_context);
         }
 
         [Test]
-        public void HandleShouldUpdatePropertyToBeListedForSale()
+        public void HandleShouldAddOffer()
         {
             // Arrange
+            var offerCommand = new MakeOfferCommand();
+
             var command = new ListPropertyCommand
             {
                 PropertyId = 1
@@ -35,19 +39,18 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             {
                 Description = "Test Property",
                 IsListedForSale = false,
-                
-                
+
+
             };
 
             _properties.Find(1).Returns(property);
 
             // Act
-            _handler.Handle(command);
+
+            _offerHandler.Handle(offerCommand);
 
             // Assert
-            _context.Properties.Received(1).Find(1);
-            _context.Received(1).SaveChanges();
-            Assert.True(property.IsListedForSale);
+            _context.Properties.Received(1).Add(Arg.Any<Models.Property>());
         }
     }
 }

@@ -87,5 +87,46 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
             Assert.That(viewModel.Properties.Count, Is.EqualTo(1));
             Assert.That(viewModel.Properties.All(p => p.Description.Contains("Town")));
         }
+
+        [Test]
+        public void BuildShouldReturnPropertiesWithOfferAccepted()
+        {
+            // Arrange
+            var builder = new PropertiesViewModelBuilder(_context);
+
+            var offerAccepted = new List<Models.Offer>
+            {
+                new Models.Offer { Amount = 1000, Id = 1, Status = OfferStatus.Rejected },
+                new Models.Offer { Amount = 2000, Id = 2, Status = OfferStatus.Accepted }
+            };
+
+            var offersRejected = new List<Models.Offer>
+            {
+                new Models.Offer { Amount = 1000, Id = 3, Status = OfferStatus.Rejected },
+                new Models.Offer { Amount = 2000, Id = 4, Status = OfferStatus.Pending }
+            };
+            
+            var properties = new List<Models.Property>{
+                new Models.Property{ StreetName = "", Description = "Great location", IsListedForSale = true,  },
+                new Models.Property{ StreetName = "", Description = "Town house", IsListedForSale = true }
+            };
+
+            var mockSet = Substitute.For<IDbSet<Models.Property>>()
+                .Initialize(properties.AsQueryable());
+
+            _context.Properties.Returns(mockSet);
+
+            var query = new PropertiesQuery
+            {
+                Search = ""
+            };
+
+            // Act
+            var viewModel = builder.Build(query);
+
+            // Assert
+            Assert.That(viewModel.Properties.Count, Is.EqualTo(2));
+            //Assert.That(viewModel.Properties.All(p => p.OfferAccepted));
+        }
     }
 }

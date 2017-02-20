@@ -24,6 +24,7 @@ namespace OrangeBricks.Web.Controllers.Property
         {
             var builder = new PropertiesViewModelBuilder(_context);
             var viewModel = builder.Build(query);
+            
 
             return View(viewModel);
         }
