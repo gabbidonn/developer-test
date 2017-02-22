@@ -32,6 +32,9 @@
 
     if (!property.UserHasOfferAccepted)
     {
+        <a href="@Url.Action("BookViewing", "Property", new {id = property.Id})" class="btn btn-primary">
+            Book A Viewing
+        </a>
         <a href="@Url.Action("MakeOffer", "Property", new {id = property.Id})" class="btn btn-primary">
             Make Offer
         </a>
