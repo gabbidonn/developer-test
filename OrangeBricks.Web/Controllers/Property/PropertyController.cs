@@ -22,10 +22,12 @@ namespace OrangeBricks.Web.Controllers.Property
         [Authorize]
         public ActionResult Index(PropertiesQuery query)
         {
+            // Add user id of the user making the query.
+            query.UserId = User.Identity.GetUserId();
+
             var builder = new PropertiesViewModelBuilder(_context);
             var viewModel = builder.Build(query);
             
-
             return View(viewModel);
         }
 

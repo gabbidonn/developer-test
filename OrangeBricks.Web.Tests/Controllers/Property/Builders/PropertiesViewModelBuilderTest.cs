@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using NSubstitute;
@@ -89,26 +90,27 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
         }
 
         [Test]
-        public void BuildShouldReturnPropertiesWithOfferAccepted()
+        public void BuildShouldReturnPropertiesWithOfferAcceptedForUser()
         {
             // Arrange
             var builder = new PropertiesViewModelBuilder(_context);
+            var userId = System.Guid.NewGuid().ToString();
 
-            var offerAccepted = new List<Models.Offer>
+            var offersAccepted = new List<Models.Offer>
             {
-                new Models.Offer { Amount = 1000, Id = 1, Status = OfferStatus.Rejected },
-                new Models.Offer { Amount = 2000, Id = 2, Status = OfferStatus.Accepted }
+                new Models.Offer { Amount = 1000, Id = 1, Status = OfferStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
+                new Models.Offer { Amount = 2000, Id = 2, Status = OfferStatus.Accepted, UserId = userId }
             };
 
             var offersRejected = new List<Models.Offer>
             {
-                new Models.Offer { Amount = 1000, Id = 3, Status = OfferStatus.Rejected },
-                new Models.Offer { Amount = 2000, Id = 4, Status = OfferStatus.Pending }
+                new Models.Offer { Amount = 1000, Id = 3, Status = OfferStatus.Rejected, UserId = userId },
+                new Models.Offer { Amount = 2000, Id = 4, Status = OfferStatus.Pending, UserId = Guid.NewGuid().ToString() }
             };
             
             var properties = new List<Models.Property>{
-                new Models.Property{ StreetName = "", Description = "Great location", IsListedForSale = true,  },
-                new Models.Property{ StreetName = "", Description = "Town house", IsListedForSale = true }
+                new Models.Property{ StreetName = "", Description = "Great location", IsListedForSale = true, Offers = offersAccepted  },
+                new Models.Property{ StreetName = "", Description = "Town house", IsListedForSale = true, Offers = offersRejected }
             };
 
             var mockSet = Substitute.For<IDbSet<Models.Property>>()
@@ -118,7 +120,8 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
 
             var query = new PropertiesQuery
             {
-                Search = ""
+                Search = "",
+                UserId = userId
             };
 
             // Act
@@ -126,7 +129,8 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
 
             // Assert
             Assert.That(viewModel.Properties.Count, Is.EqualTo(2));
-            //Assert.That(viewModel.Properties.All(p => p.OfferAccepted));
+            Assert.That(viewModel.Properties.First().UserHasOfferAccepted, Is.True);
+            Assert.That(viewModel.Properties.Last().UserHasOfferAccepted, Is.False);
         }
     }
 }
