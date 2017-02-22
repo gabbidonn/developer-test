@@ -1,6 +1,6 @@
 namespace OrangeBricks.Web.Controllers.Property.ViewModels
 {
-    public class PropertyViewModel
+    public class OfferViewModel
     {
         public string StreetName { get; set; }
         public string Description { get; set; }
@@ -8,6 +8,5 @@ namespace OrangeBricks.Web.Controllers.Property.ViewModels
         public string PropertyType { get; set; }
         public int Id { get; set; }
         public bool IsListedForSale { get; set; }
-        public OfferViewModel AcceptedOffer { get; set; }
     }
 }

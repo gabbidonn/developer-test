@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using OrangeBricks.Web.Controllers.Property.Commands;
@@ -11,8 +13,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
     {
         private CreatePropertyCommandHandler _handler;
         private MakeOfferCommandHandler _offerHandler;
-        private IOrangeBricksContext _context;
-        private IDbSet<Models.Property> _properties;
+        private IOrangeBricksContext _context;       
 
         [SetUp]
         public void SetUp()
@@ -21,14 +22,18 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             _context.Properties.Returns(Substitute.For<IDbSet<Models.Property>>());
             _handler = new CreatePropertyCommandHandler(_context);
             _offerHandler = new MakeOfferCommandHandler(_context);
-            _properties = Substitute.For<IDbSet<Models.Property>>();
         }
 
         [Test]
-        public void HandleShouldAddOffer()
+        public void HandleShouldAddOfferToProperty()
         {
             // Arrange
-            var offerCommand = new MakeOfferCommand();
+            var offerCommand = new MakeOfferCommand()
+            {
+                PropertyId = 1,
+                UserId = Guid.NewGuid().ToString(),
+                Offer = 1
+            };
 
             var command = new ListPropertyCommand
             {
@@ -37,20 +42,22 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
 
             var property = new Models.Property
             {
-                Description = "Test Property",
-                IsListedForSale = false,
-
-
+                Id = 1,
+                Description = "Test Property"
+               
             };
 
-            _properties.Find(1).Returns(property);
+            _context.Properties.Find(1).Returns(property);
 
             // Act
-
             _offerHandler.Handle(offerCommand);
 
             // Assert
-            _context.Properties.Received(1).Add(Arg.Any<Models.Property>());
+            var testProperty = _context.Properties.Find(1);
+
+            Assert.That(testProperty.Offers.Count,Is.EqualTo(1));
+            Assert.That(testProperty.Offers.First().UserId, Is.EqualTo(offerCommand.UserId));
+            Assert.That(testProperty.Offers.First().Amount, Is.EqualTo(offerCommand.Offer));
         }
     }
 }
