@@ -129,8 +129,8 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
 
             // Assert
             Assert.That(viewModel.Properties.Count, Is.EqualTo(2));
-            Assert.That(viewModel.Properties.First().UserHasOfferAccepted, Is.True);
-            Assert.That(viewModel.Properties.Last().UserHasOfferAccepted, Is.False);
+            Assert.That(viewModel.Properties.First().BuyerOfferAccepted != null, Is.True);
+            Assert.That(viewModel.Properties.Last().BuyerOfferAccepted != null, Is.False);
         }
     }
 }

@@ -1,5 +1,6 @@
 using OrangeBricks.Web.Controllers.Property.ViewModels;
 using OrangeBricks.Web.Models;
+using System;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
@@ -19,6 +20,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
             return new BookViewingViewModel
             {
                 PropertyId = property.Id,
+                ViewingDate = DateTime.Now
             };
         }
     }

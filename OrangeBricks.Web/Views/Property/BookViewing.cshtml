@@ -1,0 +1,38 @@
+﻿@model OrangeBricks.Web.Controllers.Property.ViewModels.BookViewingViewModel
+
+@{
+    ViewBag.Title = "Book a Viewing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Book Viewing</h2>
+
+@using (Html.BeginForm("BookViewing", "Property", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.LabelFor(m => m.ViewingDate, "Viewing Date", new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        <div class="form-group">
+            @Html.Hidden("PropertyId", Model.PropertyId)
+            @Html.TextBoxFor(m => m.ViewingDate, new { @class = "form-control", @id = "datetimepicker1" })
+
+            @section scripts {
+
+                @Scripts.Render("~/bundles/moment")
+                @Scripts.Render("~/bundles/datetimepicker")
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker({
+                            locale: 'en-gb'
+                        });
+                    });
+                </script>
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-6">
+            <input type="submit" class="btn btn-default" value="Book Viewing" />
+        </div>
+    </div>
+}

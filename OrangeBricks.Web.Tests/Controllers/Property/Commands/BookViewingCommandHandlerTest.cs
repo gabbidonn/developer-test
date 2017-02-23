@@ -26,10 +26,13 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
         public void HandleShouldAddViewingToProperty()
         {
             // Arrange
+            var userId = Guid.NewGuid().ToString();
+
             var bookViewingCommand = new BookViewingCommand()
             {
                 PropertyId = 1,
-                ViewingDate = DateTime.Now
+                ViewingDate = DateTime.Now,
+                UserId = userId
                 
             };
 
@@ -37,7 +40,6 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             {
                 Id = 1,
                 Description = "Test Property"
-               
             };
 
             _context.Properties.Find(1).Returns(property);
@@ -49,6 +51,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             var testProperty = _context.Properties.Find(1);
 
             Assert.That(testProperty.Viewings.Count,Is.EqualTo(1));
+            Assert.That(testProperty.Viewings.First().UserId, Is.EqualTo(userId));
             Assert.That(testProperty.Viewings.First().ViewingDate, Is.EqualTo(bookViewingCommand.ViewingDate));
         }
     }

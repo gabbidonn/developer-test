@@ -10,9 +10,9 @@
 @using (Html.BeginForm("Index", "Property", FormMethod.Get, new { @class = "form-horizontal" }))
 {
     <div class="form-group form-group-lg">
-        @Html.LabelFor(x => x.Search, "Search:", new { @class = "col-sm-2 control-label" })
+        @Html.LabelFor(x => x.SearchQuery.Search, "Search:", new { @class = "col-sm-2 control-label" })
         <div class="col-sm-8">
-            @Html.TextBoxFor(m => m.Search, new { @class = "form-control", @placeholder = "Search by street or description..." })
+            @Html.TextBoxFor(m => m.SearchQuery.Search, new { @class = "form-control", @placeholder = "Search by street or description..." })
         </div>
     <div class="col-sm-2">
         <button type="submit" class="btn btn-default">Search</button>
@@ -30,11 +30,8 @@
     <p>@property.NumberOfBedrooms bedroom @property.PropertyType</p>
     <p>@property.Description</p>
 
-    if (!property.UserHasOfferAccepted)
+    if (property.BuyerOfferAccepted == null)
     {
-        <a href="@Url.Action("BookViewing", "Property", new {id = property.Id})" class="btn btn-primary">
-            Book A Viewing
-        </a>
         <a href="@Url.Action("MakeOffer", "Property", new {id = property.Id})" class="btn btn-primary">
             Make Offer
         </a>
@@ -44,7 +41,7 @@
         <p><strong>Congratulations!  Your offer has been accepted on this property:</strong></p>
         
         <div>
-            <p><strong>Your Offer Amount: </strong> £@property.UserOfferAccepted.Offer</p>
+            <p><strong>Your Offer Amount: </strong> £@property.BuyerOfferAccepted.Offer</p>
         </div>        
     }
 

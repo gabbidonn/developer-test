@@ -11,5 +11,7 @@ namespace OrangeBricks.Web.Models
         public string UserId { get; set; }
 
         public DateTime ViewingDate { get; set; }
+
+        public ViewingStatus ViewingStatus { get; set; }
     }
 }

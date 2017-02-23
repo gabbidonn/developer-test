@@ -98,11 +98,22 @@ namespace OrangeBricks.Web.Controllers.Property
             return RedirectToAction("Index");
         }
 
+        [OrangeBricksAuthorize(Roles = "Buyer")]
+        public ActionResult BookViewing(int id)
+        {
+            var builder = new BookViewingViewModelBuilder(_context);
+            var viewModel = builder.Build(id);
+            return View(viewModel);
+        }
+
         [HttpPost]
         [OrangeBricksAuthorize(Roles = "Buyer")]
         public ActionResult BookViewing(BookViewingCommand command)
         {
             var handler = new BookViewingCommandHandler(_context);
+
+            // Add the user id of the buyer making the offer.
+            command.UserId = User.Identity.GetUserId();
 
             handler.Handle(command);
 

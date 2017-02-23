@@ -19,7 +19,8 @@ namespace OrangeBricks.Web.Controllers.Property.Commands
 
             var viewing = new Viewing
             {
-                ViewingDate = command.ViewingDate
+                ViewingDate = command.ViewingDate,
+                UserId = command.UserId
             };
 
             if (property.Viewings == null)

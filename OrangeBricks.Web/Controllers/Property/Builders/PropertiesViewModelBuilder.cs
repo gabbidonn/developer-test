@@ -35,15 +35,29 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
                 Properties = properties
                     .ToList()
                     .Select(p => MapViewModel(p,query.UserId))
-                    .OrderByDescending(p => p.UserHasOfferAccepted)
+                    .OrderByDescending(p => p.BuyerOfferAccepted != null)
                     .ToList(),
-                Search = query.Search
+                SearchQuery = query
             };
         }
 
         private static PropertyViewModel MapViewModel(Models.Property property, string userId)
         {
-            var offers = property.Offers ?? new List<Offer>();
+            var buyerAcceptedOffer = property.Offers?.Where(o => o.UserId == userId && o.Status == OfferStatus.Accepted)
+                                            .Select(o => new AcceptedOfferViewModel()
+                                            {
+                                                Id = o.Id,
+                                                Offer = o.Amount
+                                            }).SingleOrDefault();
+
+            var bookedViewings = property.Viewings?.Where(v => v.UserId == userId 
+                                                               && v.ViewingStatus == ViewingStatus.Confirmed
+                                                               && v.ViewingDate > DateTime.Now)
+                                            .Select(v => new BookViewingViewModel()
+                                            {
+                                                Id = v.Id,
+                                                ViewingDate = v.ViewingDate
+                                            }).SingleOrDefault();
 
             return new PropertyViewModel
             {
@@ -52,13 +66,8 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
                 Description = property.Description,
                 NumberOfBedrooms = property.NumberOfBedrooms,
                 PropertyType = property.PropertyType,
-                UserHasOfferAccepted = offers.Any(o => o.UserId == userId && o.Status == OfferStatus.Accepted),
-                UserOfferAccepted =  offers.Where(o => o.UserId == userId && o.Status == OfferStatus.Accepted)
-                                            .Select(o => new AcceptedOfferViewModel()
-                                            {
-                                                Id = o.Id,
-                                                Offer = o.Amount
-                                            }).LastOrDefault() // TODO: Ensure only one offer is accepted for a property at any time.                                               
+                BuyerOfferAccepted =  buyerAcceptedOffer, // TODO: Ensure only one offer is accepted for a property at any time.      
+                BuyerBookedViewing = bookedViewings // TODO: Ensure only one viewing is allowed at any one time.
             };
         }
     }
