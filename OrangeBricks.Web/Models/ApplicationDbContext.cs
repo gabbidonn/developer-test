@@ -2,7 +2,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace OrangeBricks.Web.Models
+namespace OrangeBricks.Web.Database.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IOrangeBricksContext
     {
@@ -25,13 +25,5 @@ namespace OrangeBricks.Web.Models
             base.SaveChanges();
         }
     }
-
-    public interface IOrangeBricksContext
-    {
-        IDbSet<Property> Properties { get; set; }
-        IDbSet<Offer> Offers { get; set; }
-        IDbSet<Viewing> Viewings { get; set; }
-
-        void SaveChanges();
-    }
+    
 }

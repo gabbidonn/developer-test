@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace OrangeBricks.Web.Models
+namespace OrangeBricks.Web.Database.Models
 {
     public class Viewing
     {

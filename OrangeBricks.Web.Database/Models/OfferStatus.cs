@@ -1,4 +1,4 @@
-﻿namespace OrangeBricks.Web.Models
+﻿namespace OrangeBricks.Web.Database.Models
 {
     public enum OfferStatus
     {
