@@ -53,6 +53,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             Assert.That(testProperty.Viewings.Count,Is.EqualTo(1));
             Assert.That(testProperty.Viewings.First().UserId, Is.EqualTo(userId));
             Assert.That(testProperty.Viewings.First().ViewingDate, Is.EqualTo(bookViewingCommand.ViewingDate));
+            Assert.That(testProperty.Viewings.First().ViewingStatus, Is.EqualTo(ViewingStatus.Pending));
         }
     }
 }

@@ -90,7 +90,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
         }
 
         [Test]
-        public void BuildShouldReturnPropertiesWithOfferAcceptedForUser()
+        public void BuildShouldReturnPropertiesWithOfferAcceptedForBuyer()
         {
             // Arrange
             var builder = new PropertiesViewModelBuilder(_context);
@@ -132,5 +132,93 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
             Assert.That(viewModel.Properties.First().BuyerOfferAccepted != null, Is.True);
             Assert.That(viewModel.Properties.Last().BuyerOfferAccepted != null, Is.False);
         }
+
+        [Test]
+        public void BuildShouldReturnPropertiesWithViewingBookedByBuyer()
+        {
+            // Arrange
+            var builder = new PropertiesViewModelBuilder(_context);
+            var userId = System.Guid.NewGuid().ToString();
+
+            var viewings = new List<Models.Viewing>
+            {
+                new Models.Viewing { Id = 1, ViewingDate = DateTime.Now.AddDays(1) , ViewingStatus = ViewingStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
+                new Models.Viewing { Id = 2, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Confirmed, UserId = userId }
+            };
+
+            var viewings2 = new List<Models.Viewing>
+            {
+                new Models.Viewing { Id = 3, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Rejected, UserId = userId },
+                new Models.Viewing { Id = 4, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Pending, UserId = Guid.NewGuid().ToString() }
+            };
+
+            var properties = new List<Models.Property>{
+                new Models.Property{ Id = 1, StreetName = "", Description = "Great location", IsListedForSale = true, Viewings = viewings  },
+                new Models.Property{ Id = 2, StreetName = "", Description = "Town house", IsListedForSale = true, Viewings = viewings2 }
+            };
+
+            var mockSet = Substitute.For<IDbSet<Models.Property>>()
+                .Initialize(properties.AsQueryable());
+
+            _context.Properties.Returns(mockSet);
+
+            var query = new PropertiesQuery
+            {
+                Search = "",
+                UserId = userId
+            };
+
+            // Act
+            var viewModel = builder.Build(query);
+
+            // Assert
+            Assert.That(viewModel.Properties.Count, Is.EqualTo(2));
+            Assert.That(viewModel.Properties.Single(p => p.Id == 1).BuyerBookedViewing != null, Is.True);
+            Assert.That(viewModel.Properties.Single(p => p.Id == 2).BuyerBookedViewing != null, Is.True);
+        }
+
+        [Test]
+        public void BuildShouldReturnPropertiesWithViewingBookedByBuyerAndConfirmed()
+        {
+            // Arrange
+            var builder = new PropertiesViewModelBuilder(_context);
+            var userId = System.Guid.NewGuid().ToString();
+
+            var viewings = new List<Models.Viewing>
+            {
+                new Models.Viewing { Id = 1, ViewingDate = DateTime.Now.AddDays(1) , ViewingStatus = ViewingStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
+                new Models.Viewing { Id = 2, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Confirmed, UserId = userId }
+            };
+
+            var viewings2 = new List<Models.Viewing>
+            {
+                new Models.Viewing { Id = 3, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Rejected, UserId = userId },
+                new Models.Viewing { Id = 4, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Pending, UserId = Guid.NewGuid().ToString() }
+            };
+
+            var properties = new List<Models.Property>{
+                new Models.Property{ Id = 1, StreetName = "", Description = "Great location", IsListedForSale = true, Viewings = viewings  },
+                new Models.Property{ Id = 2, StreetName = "", Description = "Town house", IsListedForSale = true, Viewings = viewings2 }
+            };
+
+            var mockSet = Substitute.For<IDbSet<Models.Property>>()
+                .Initialize(properties.AsQueryable());
+
+            _context.Properties.Returns(mockSet);
+
+            var query = new PropertiesQuery
+            {
+                Search = "",
+                UserId = userId
+            };
+
+            // Act
+            var viewModel = builder.Build(query);
+
+            // Assert
+            Assert.That(viewModel.Properties.Single(p => p.Id == 1).BuyerBookedViewing.IsConfirmed, Is.True);
+            Assert.That(viewModel.Properties.Single(p => p.Id == 2).BuyerBookedViewing.IsConfirmed, Is.False);
+        }
+
     }
 }

@@ -173,6 +173,13 @@
     <Compile Include="Attributes\OrangeBricksAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Viewings\Builders\PropertyViewingsViewModelBuilder.cs" />
+    <Compile Include="Controllers\Viewings\Commands\AcceptViewingCommandHandler.cs" />
+    <Compile Include="Controllers\Viewings\Commands\AcceptViewingCommand.cs" />
+    <Compile Include="Controllers\Viewings\Commands\RejectViewingCommandHandler.cs" />
+    <Compile Include="Controllers\Viewings\Commands\RejectViewingCommand.cs" />
+    <Compile Include="Controllers\Viewings\ViewingsController.cs" />
+    <Compile Include="Controllers\Viewings\ViewModels\PropertyViewingsViewModel.cs" />
     <Compile Include="Controllers\Offers\Builders\OffersOnPropertyViewModelBuilder.cs" />
     <Compile Include="Controllers\Offers\Commands\AcceptOfferCommand.cs" />
     <Compile Include="Controllers\Offers\Commands\AcceptOfferCommandHandler.cs" />
@@ -304,6 +311,7 @@
     <Content Include="Views\Offers\OnProperty.cshtml" />
     <None Include="Views\Account\UnAuthorized.cshtml" />
     <Content Include="Views\Property\BookViewing.cshtml" />
+    <Content Include="Views\Viewings\OnProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

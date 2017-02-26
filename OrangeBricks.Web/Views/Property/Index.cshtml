@@ -32,6 +32,33 @@
 
     if (property.BuyerOfferAccepted == null)
     {
+        if (property.BuyerBookedViewing != null)
+        {
+            if (!@property.BuyerBookedViewing.IsConfirmed)
+            {
+                <p>
+                    Your proposed viewing for <strong>@property.BuyerBookedViewing.ViewingDate.ToLongDateString()</strong>
+                    at <strong>@property.BuyerBookedViewing.ViewingDate.ToLongTimeString()</strong> is NOT CONFIRMED by the seller
+                </p>
+            }
+            else
+            {
+                <p>
+                    Congratulations!  Your viewing has been confirmed for <strong>@property.BuyerBookedViewing.ViewingDate.ToLongDateString()</strong>
+                    at @property.BuyerBookedViewing.ViewingDate.ToLongTimeString()
+                </p>
+            }
+
+
+
+        }
+        else
+        {
+            <a href="@Url.Action("BookViewing", "Property", new {id = property.Id})" class="btn btn-primary">
+                Book A Viewing
+            </a>
+        }
+
         <a href="@Url.Action("MakeOffer", "Property", new {id = property.Id})" class="btn btn-primary">
             Make Offer
         </a>

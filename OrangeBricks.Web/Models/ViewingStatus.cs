@@ -3,6 +3,7 @@
     public enum ViewingStatus
     {
         Pending,
-        Confirmed        
+        Confirmed,
+        Rejected   
     }
 }

@@ -21,7 +21,8 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
         {
             var properties = _context.Properties
                 .Where(p => p.IsListedForSale)
-                .Include(o => o.Offers);
+                .Include(o => o.Offers)
+                .Include(v => v.Viewings);
 
             if (!string.IsNullOrWhiteSpace(query.Search))
             {
@@ -50,13 +51,13 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
                                                 Offer = o.Amount
                                             }).SingleOrDefault();
 
-            var bookedViewings = property.Viewings?.Where(v => v.UserId == userId 
-                                                               && v.ViewingStatus == ViewingStatus.Confirmed
+            var buyerBookedViewing = property.Viewings?.Where(v => v.UserId == userId 
                                                                && v.ViewingDate > DateTime.Now)
                                             .Select(v => new BookViewingViewModel()
                                             {
                                                 Id = v.Id,
-                                                ViewingDate = v.ViewingDate
+                                                ViewingDate = v.ViewingDate,
+                                                IsConfirmed = v.ViewingStatus == ViewingStatus.Confirmed
                                             }).SingleOrDefault();
 
             return new PropertyViewModel
@@ -67,7 +68,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
                 NumberOfBedrooms = property.NumberOfBedrooms,
                 PropertyType = property.PropertyType,
                 BuyerOfferAccepted =  buyerAcceptedOffer, // TODO: Ensure only one offer is accepted for a property at any time.      
-                BuyerBookedViewing = bookedViewings // TODO: Ensure only one viewing is allowed at any one time.
+                BuyerBookedViewing = buyerBookedViewing // TODO: Ensure only one viewing is allowed at any one time.
             };
         }
     }

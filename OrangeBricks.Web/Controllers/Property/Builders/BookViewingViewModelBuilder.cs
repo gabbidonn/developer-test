@@ -20,7 +20,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
             return new BookViewingViewModel
             {
                 PropertyId = property.Id,
-                ViewingDate = DateTime.Now
+                ViewingDate = DateTime.Now                
             };
         }
     }
