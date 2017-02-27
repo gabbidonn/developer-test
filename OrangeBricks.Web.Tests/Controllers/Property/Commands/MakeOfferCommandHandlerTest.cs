@@ -4,7 +4,8 @@ using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using OrangeBricks.Web.Controllers.Property.Commands;
-using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
 {
@@ -19,7 +20,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
         public void SetUp()
         {
             _context = Substitute.For<IOrangeBricksContext>();
-            _context.Properties.Returns(Substitute.For<IDbSet<Models.Property>>());
+            _context.Properties.Returns(Substitute.For<IDbSet<Domain.Models.Property>>());
             _handler = new CreatePropertyCommandHandler(_context);
             _offerHandler = new MakeOfferCommandHandler(_context);
         }
@@ -40,7 +41,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
                 PropertyId = 1
             };
 
-            var property = new Models.Property
+            var property = new Domain.Models.Property
             {
                 Id = 1,
                 Description = "Test Property"

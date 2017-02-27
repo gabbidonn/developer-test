@@ -3,6 +3,8 @@ using OrangeBricks.Web.Attributes;
 using OrangeBricks.Web.Controllers.Offers.Builders;
 using OrangeBricks.Web.Controllers.Offers.Commands;
 using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Controllers.Offers
 {

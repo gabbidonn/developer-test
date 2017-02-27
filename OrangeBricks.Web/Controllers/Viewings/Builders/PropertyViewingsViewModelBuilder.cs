@@ -2,7 +2,8 @@
 using System.Data.Entity;
 using System.Linq;
 using OrangeBricks.Web.Controllers.Viewings.ViewModels;
-using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Controllers.Viewings.Builders
 {

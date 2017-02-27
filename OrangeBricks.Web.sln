@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrangeBricks.Web", "OrangeB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrangeBricks.Web.Tests", "OrangeBricks.Web.Tests\OrangeBricks.Web.Tests.csproj", "{AA9A9899-7AE8-4E5D-84C3-76BD96ACD229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrangeBricks.Web.Database", "OrangeBricks.Web.Database\OrangeBricks.Web.Database.csproj", "{305D2192-8031-4AB8-92BD-9F57F7557447}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrangeBricks.Domain", "OrangeBricks.Domain\OrangeBricks.Domain.csproj", "{305D2192-8031-4AB8-92BD-9F57F7557447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

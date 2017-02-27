@@ -3,8 +3,9 @@ using System.Data.Entity;
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 using OrangeBricks.Web.Controllers.Property.Commands;
-using OrangeBricks.Web.Models;
 
 namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
 {
@@ -18,7 +19,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
         public void SetUp()
         {
             _context = Substitute.For<IOrangeBricksContext>();
-            _context.Properties.Returns(Substitute.For<IDbSet<Models.Property>>());
+            _context.Properties.Returns(Substitute.For<IDbSet<Domain.Models.Property>>());
             _bookViewingHandler = new BookViewingCommandHandler(_context);
         }
 
@@ -36,7 +37,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
                 
             };
 
-            var property = new Models.Property
+            var property = new Domain.Models.Property
             {
                 Id = 1,
                 Description = "Test Property"

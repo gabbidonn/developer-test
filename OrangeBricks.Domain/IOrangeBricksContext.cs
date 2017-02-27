@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using OrangeBricks.Web.Database.Models;
+using OrangeBricks.Domain.Models;
 
-namespace OrangeBricks.Web.Database
+namespace OrangeBricks.Domain
 {
     public interface IOrangeBricksContext
     {

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace OrangeBricks.Web.Database.Models
+namespace OrangeBricks.Domain.Models
 {
     public class Offer
     {

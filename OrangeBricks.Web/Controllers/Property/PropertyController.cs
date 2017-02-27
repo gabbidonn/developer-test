@@ -6,7 +6,7 @@ using OrangeBricks.Web.Attributes;
 using OrangeBricks.Web.Controllers.Property.Builders;
 using OrangeBricks.Web.Controllers.Property.Commands;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
-using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
 
 namespace OrangeBricks.Web.Controllers.Property
 {

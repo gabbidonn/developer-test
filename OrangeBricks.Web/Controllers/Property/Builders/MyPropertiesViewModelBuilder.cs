@@ -1,6 +1,6 @@
 using System.Linq;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
-using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {

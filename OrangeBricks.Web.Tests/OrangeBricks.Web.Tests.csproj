@@ -111,8 +111,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OrangeBricks.Domain\OrangeBricks.Domain.csproj">
+      <Project>{305d2192-8031-4ab8-92bd-9f57f7557447}</Project>
+      <Name>OrangeBricks.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrangeBricks.Web\OrangeBricks.Web.csproj">
-      <Project>{09E3AF0B-9370-4C77-97B4-427F77EE842A}</Project>
+      <Project>{09e3af0b-9370-4c77-97b4-427f77ee842a}</Project>
       <Name>OrangeBricks.Web</Name>
     </ProjectReference>
   </ItemGroup>

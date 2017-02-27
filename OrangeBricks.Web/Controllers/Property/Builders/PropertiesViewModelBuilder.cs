@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using OrangeBricks.Web.Controllers.Property.ViewModels;
-using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders
 {
@@ -42,7 +43,7 @@ namespace OrangeBricks.Web.Controllers.Property.Builders
             };
         }
 
-        private static PropertyViewModel MapViewModel(Models.Property property, string userId)
+        private static PropertyViewModel MapViewModel(Domain.Models.Property property, string userId)
         {
             var buyerAcceptedOffer = property.Offers?.Where(o => o.UserId == userId && o.Status == OfferStatus.Accepted)
                                             .Select(o => new AcceptedOfferViewModel()

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace OrangeBricks.Web.Database.Models
+namespace OrangeBricks.Web.Models
 {
     public class IndexViewModel
     {

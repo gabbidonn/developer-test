@@ -1,4 +1,4 @@
-﻿namespace OrangeBricks.Web.Database.Models
+﻿namespace OrangeBricks.Domain.Models
 {
     public enum ViewingStatus
     {

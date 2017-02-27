@@ -1,4 +1,5 @@
 using OrangeBricks.Web.Controllers.Property.ViewModels;
+using OrangeBricks.Domain;
 using OrangeBricks.Web.Models;
 
 namespace OrangeBricks.Web.Controllers.Property.Builders

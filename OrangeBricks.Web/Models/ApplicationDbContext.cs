@@ -1,8 +1,10 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 
-namespace OrangeBricks.Web.Database.Models
+namespace OrangeBricks.Web.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IOrangeBricksContext
     {

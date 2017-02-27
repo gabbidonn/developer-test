@@ -7,10 +7,11 @@
     <ProjectGuid>{305D2192-8031-4AB8-92BD-9F57F7557447}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OrangeBricks.Web.Database</RootNamespace>
-    <AssemblyName>OrangeBricks.Web.Database</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>OrangeBricks.Domain</RootNamespace>
+    <AssemblyName>OrangeBricks.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,8 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IOrangeBricksContext.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Offer.cs" />
     <Compile Include="Models\OfferStatus.cs" />
     <Compile Include="Models\Property.cs" />

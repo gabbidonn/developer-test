@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OrangeBricks.Web.Database.Models
+namespace OrangeBricks.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

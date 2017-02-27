@@ -2,7 +2,7 @@
 using OrangeBricks.Web.Attributes;
 using OrangeBricks.Web.Controllers.Viewings.Builders;
 using OrangeBricks.Web.Controllers.Viewings.Commands;
-using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
 
 namespace OrangeBricks.Web.Controllers.Viewings
 {

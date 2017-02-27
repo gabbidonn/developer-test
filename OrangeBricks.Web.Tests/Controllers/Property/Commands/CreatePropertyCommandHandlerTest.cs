@@ -2,7 +2,9 @@
 using NSubstitute;
 using NUnit.Framework;
 using OrangeBricks.Web.Controllers.Property.Commands;
-using OrangeBricks.Web.Models;
+using OrangeBricks.Web.Controllers.Property;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
 {
@@ -16,7 +18,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
         public void SetUp()
         {
             _context = Substitute.For<IOrangeBricksContext>();
-            _context.Properties.Returns(Substitute.For<IDbSet<Models.Property>>());
+            _context.Properties.Returns(Substitute.For<IDbSet<Domain.Models.Property>>());
             _handler = new CreatePropertyCommandHandler(_context);
         }
 
@@ -30,7 +32,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             _handler.Handle(command);
 
             // Assert
-            _context.Properties.Received(1).Add(Arg.Any<Models.Property>());
+            _context.Properties.Received(1).Add(Arg.Any<Domain.Models.Property>());
         }
 
         [Test]
@@ -46,7 +48,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             _handler.Handle(command);
 
             // Assert
-            _context.Properties.Received(1).Add(Arg.Is<Models.Property>(x => x.PropertyType == "House"));
+            _context.Properties.Received(1).Add(Arg.Is<Domain.Models.Property>(x => x.PropertyType == "House"));
         }
 
         [Test]
@@ -62,7 +64,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             _handler.Handle(command);
 
             // Assert
-            _context.Properties.Received(1).Add(Arg.Is<Models.Property>(x => x.StreetName == "Barnard Road"));
+            _context.Properties.Received(1).Add(Arg.Is<Domain.Models.Property>(x => x.StreetName == "Barnard Road"));
         }
 
         [Test]
@@ -78,7 +80,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             _handler.Handle(command);
 
             // Assert
-            _context.Properties.Received(1).Add(Arg.Is<Models.Property>(x => x.Description == "A fantastic property."));
+            _context.Properties.Received(1).Add(Arg.Is<Domain.Models.Property>(x => x.Description == "A fantastic property."));
         }
 
         [Test]
@@ -94,7 +96,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             _handler.Handle(command);
 
             // Assert
-            _context.Properties.Received(1).Add(Arg.Is<Models.Property>(x => x.NumberOfBedrooms == 3));
+            _context.Properties.Received(1).Add(Arg.Is<Domain.Models.Property>(x => x.NumberOfBedrooms == 3));
         }
 
         [Test]
@@ -111,7 +113,7 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
             _handler.Handle(command);
 
             // Assert
-            _context.Properties.Received(1).Add(Arg.Is<Models.Property>(x => x.SellerUserId == sellerUserId));
+            _context.Properties.Received(1).Add(Arg.Is<Domain.Models.Property>(x => x.SellerUserId == sellerUserId));
         }
     }
 }

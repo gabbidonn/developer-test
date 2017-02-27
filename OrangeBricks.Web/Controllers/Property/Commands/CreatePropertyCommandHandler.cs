@@ -1,4 +1,5 @@
-using OrangeBricks.Web.Models;
+using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Controllers.Property.Commands
 {
@@ -13,7 +14,7 @@ namespace OrangeBricks.Web.Controllers.Property.Commands
 
         public void Handle(CreatePropertyCommand command)
         {
-            var property = new Models.Property
+            var property = new Domain.Models.Property
             {
                PropertyType = command.PropertyType,
                StreetName = command.StreetName,

@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OrangeBricks.Web.Infrastructure;
 using OrangeBricks.Web.Models;
+using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Controllers
 {

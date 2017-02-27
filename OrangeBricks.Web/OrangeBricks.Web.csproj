@@ -241,8 +241,10 @@
       <DependentUpon>201505101607236_AddFieldsToOffers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -337,6 +339,12 @@
     <EmbeddedResource Include="Migrations\201505101607236_AddFieldsToOffers.resx">
       <DependentUpon>201505101607236_AddFieldsToOffers.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrangeBricks.Domain\OrangeBricks.Domain.csproj">
+      <Project>{305d2192-8031-4ab8-92bd-9f57f7557447}</Project>
+      <Name>OrangeBricks.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
