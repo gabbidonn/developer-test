@@ -97,16 +97,16 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
             var builder = new PropertiesViewModelBuilder(_context);
             var userId = System.Guid.NewGuid().ToString();
 
-            var offersAccepted = new List<Domain.Models.Offer>
+            var offersAccepted = new List<Offer>
             {
-                new Domain.Models.Offer { Amount = 1000, Id = 1, Status = OfferStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
-                new Domain.Models.Offer { Amount = 2000, Id = 2, Status = OfferStatus.Accepted, UserId = userId }
+                new Offer { Amount = 1000, Id = 1, Status = OfferStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
+                new Offer { Amount = 2000, Id = 2, Status = OfferStatus.Accepted, UserId = userId }
             };
 
-            var offersRejected = new List<Domain.Models.Offer>
+            var offersRejected = new List<Offer>
             {
-                new Domain.Models.Offer { Amount = 1000, Id = 3, Status = OfferStatus.Rejected, UserId = userId },
-                new Domain.Models.Offer { Amount = 2000, Id = 4, Status = OfferStatus.Pending, UserId = Guid.NewGuid().ToString() }
+                new Offer { Amount = 1000, Id = 3, Status = OfferStatus.Rejected, UserId = userId },
+                new Offer { Amount = 2000, Id = 4, Status = OfferStatus.Pending, UserId = Guid.NewGuid().ToString() }
             };
             
             var properties = new List<Domain.Models.Property>{
@@ -141,16 +141,16 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
             var builder = new PropertiesViewModelBuilder(_context);
             var userId = System.Guid.NewGuid().ToString();
 
-            var viewings = new List<Domain.Models.Viewing>
+            var viewings = new List<Viewing>
             {
-                new Domain.Models.Viewing { Id = 1, ViewingDate = DateTime.Now.AddDays(1) , ViewingStatus = ViewingStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
-                new Domain.Models.Viewing { Id = 2, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Confirmed, UserId = userId }
+                new Viewing { Id = 1, ViewingDate = DateTime.Now.AddDays(1) , ViewingStatus = ViewingStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
+                new Viewing { Id = 2, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Confirmed, UserId = userId }
             };
 
-            var viewings2 = new List<Domain.Models.Viewing>
+            var viewings2 = new List<Viewing>
             {
-                new Domain.Models.Viewing { Id = 3, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Rejected, UserId = userId },
-                new Domain.Models.Viewing { Id = 4, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Pending, UserId = Guid.NewGuid().ToString() }
+                new Viewing { Id = 3, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Rejected, UserId = userId },
+                new Viewing { Id = 4, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Pending, UserId = Guid.NewGuid().ToString() }
             };
 
             var properties = new List<Domain.Models.Property>{
@@ -185,16 +185,16 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
             var builder = new PropertiesViewModelBuilder(_context);
             var userId = System.Guid.NewGuid().ToString();
 
-            var viewings = new List<Domain.Models.Viewing>
+            var viewings = new List<Viewing>
             {
-                new Domain.Models.Viewing { Id = 1, ViewingDate = DateTime.Now.AddDays(1) , ViewingStatus = ViewingStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
-                new Domain.Models.Viewing { Id = 2, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Confirmed, UserId = userId }
+                new Viewing { Id = 1, ViewingDate = DateTime.Now.AddDays(1) , ViewingStatus = ViewingStatus.Rejected, UserId = Guid.NewGuid().ToString()   },
+                new Viewing { Id = 2, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Confirmed, UserId = userId }
             };
 
-            var viewings2 = new List<Domain.Models.Viewing>
+            var viewings2 = new List<Viewing>
             {
-                new Domain.Models.Viewing { Id = 3, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Rejected, UserId = userId },
-                new Domain.Models.Viewing { Id = 4, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Pending, UserId = Guid.NewGuid().ToString() }
+                new Viewing { Id = 3, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Rejected, UserId = userId },
+                new Viewing { Id = 4, ViewingDate = DateTime.Now.AddDays(1), ViewingStatus = ViewingStatus.Pending, UserId = Guid.NewGuid().ToString() }
             };
 
             var properties = new List<Domain.Models.Property>{

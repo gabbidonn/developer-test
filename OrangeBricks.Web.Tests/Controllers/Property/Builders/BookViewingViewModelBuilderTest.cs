@@ -27,9 +27,9 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
             // Arrange
             var builder = new BookViewingViewModelBuilder(_context);
 
-            var viewingsProperty1 = new List<Domain.Models.Viewing>{
-                new Domain.Models.Viewing{ ViewingDate = DateTime.Now },
-                new Domain.Models.Viewing{ ViewingDate = DateTime.Now.AddDays(1) }
+            var viewingsProperty1 = new List<Viewing>{
+                new Viewing{ ViewingDate = DateTime.Now },
+                new Viewing{ ViewingDate = DateTime.Now.AddDays(1) }
             };
 
             var property = new Domain.Models.Property { Id = 1, StreetName = "Smith Street", Description = "", IsListedForSale = true };
@@ -49,9 +49,9 @@ namespace OrangeBricks.Web.Tests.Controllers.Property.Builders
             // Arrange
             var builder = new BookViewingViewModelBuilder(_context);
 
-            var viewingsProperty1 = new List<Domain.Models.Viewing>{
-                new Domain.Models.Viewing{ ViewingDate = DateTime.Now },
-                new Domain.Models.Viewing{ ViewingDate = DateTime.Now.AddDays(1) }
+            var viewingsProperty1 = new List<Viewing>{
+                new Viewing{ ViewingDate = DateTime.Now },
+                new Viewing{ ViewingDate = DateTime.Now.AddDays(1) }
             };
 
             var property = new Domain.Models.Property { Id = 5000, StreetName = "Smith Street", Description = "", IsListedForSale = true };

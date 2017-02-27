@@ -2,9 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using OrangeBricks.Web.Controllers.Property.Commands;
-using OrangeBricks.Web.Controllers.Property;
 using OrangeBricks.Domain;
-using OrangeBricks.Domain.Models;
 
 namespace OrangeBricks.Web.Tests.Controllers.Property.Commands
 {
