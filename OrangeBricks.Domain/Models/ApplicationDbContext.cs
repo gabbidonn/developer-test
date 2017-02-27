@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using OrangeBricks.Domain;
 using OrangeBricks.Domain.Models;
 
-namespace OrangeBricks.Web.Models
+namespace OrangeBricks.Domain.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IOrangeBricksContext
     {

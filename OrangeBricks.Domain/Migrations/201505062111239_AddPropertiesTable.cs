@@ -1,4 +1,4 @@
-namespace OrangeBricks.Web.Migrations
+namespace OrangeBricks.Domain.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

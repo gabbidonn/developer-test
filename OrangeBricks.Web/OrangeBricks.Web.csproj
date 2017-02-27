@@ -212,38 +212,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\IdentityManager.cs" />
-    <Compile Include="Migrations\201505052030221_InitialCreate.cs" />
-    <Compile Include="Migrations\201505052030221_InitialCreate.Designer.cs">
-      <DependentUpon>201505052030221_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505062111239_AddPropertiesTable.cs" />
-    <Compile Include="Migrations\201505062111239_AddPropertiesTable.Designer.cs">
-      <DependentUpon>201505062111239_AddPropertiesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505100925257_AddPropertiesFields.cs" />
-    <Compile Include="Migrations\201505100925257_AddPropertiesFields.Designer.cs">
-      <DependentUpon>201505100925257_AddPropertiesFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505100940267_ChangeSellerRelationship.cs" />
-    <Compile Include="Migrations\201505100940267_ChangeSellerRelationship.Designer.cs">
-      <DependentUpon>201505100940267_ChangeSellerRelationship.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505101051033_AddPropertyForSaleOption.cs" />
-    <Compile Include="Migrations\201505101051033_AddPropertyForSaleOption.Designer.cs">
-      <DependentUpon>201505101051033_AddPropertyForSaleOption.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505101523118_AddOffersRelationship.cs" />
-    <Compile Include="Migrations\201505101523118_AddOffersRelationship.Designer.cs">
-      <DependentUpon>201505101523118_AddOffersRelationship.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505101607236_AddFieldsToOffers.cs" />
-    <Compile Include="Migrations\201505101607236_AddFieldsToOffers.Designer.cs">
-      <DependentUpon>201505101607236_AddFieldsToOffers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -316,29 +285,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505052030221_InitialCreate.resx">
-      <DependentUpon>201505052030221_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505062111239_AddPropertiesTable.resx">
-      <DependentUpon>201505062111239_AddPropertiesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505100925257_AddPropertiesFields.resx">
-      <DependentUpon>201505100925257_AddPropertiesFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505100940267_ChangeSellerRelationship.resx">
-      <DependentUpon>201505100940267_ChangeSellerRelationship.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505101051033_AddPropertyForSaleOption.resx">
-      <DependentUpon>201505101051033_AddPropertyForSaleOption.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505101523118_AddOffersRelationship.resx">
-      <DependentUpon>201505101523118_AddOffersRelationship.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505101607236_AddFieldsToOffers.resx">
-      <DependentUpon>201505101607236_AddFieldsToOffers.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrangeBricks.Domain\OrangeBricks.Domain.csproj">

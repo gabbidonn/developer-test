@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using OrangeBricks.Web.Models;
 using OrangeBricks.Domain;
+using OrangeBricks.Domain.Models;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using SimpleInjector.Integration.Web.Mvc;
